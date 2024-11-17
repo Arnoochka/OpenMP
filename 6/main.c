@@ -3,16 +3,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 5000
-#define MAX 1000
-#define MAX_SIZE 100
+#define N 6// число пар векторов
+#define MAX 10 // максимальное число по модулю в векторе
+#define MAX_SIZE 3 // максимальный размер вектора 
 
 // сгенерировать N векторов
 int main(int argc, char* argv[]) {
     int sign, n;
     srand(time(0));
+
     int* arr[2][N];
     FILE *file = fopen("arrays.txt", "w");
+    fprintf(file, "%d %d\n", N, MAX_SIZE);
 
     double start = omp_get_wtime();
     #pragma omp parallel private(n)
@@ -32,23 +34,21 @@ int main(int argc, char* argv[]) {
 
             #pragma omp critical
             {
-                for (int i = 0; i < n; ++i) {
-                    fprintf(file, "%d ", arr[0][k][i]);
+                for (int r =0; r < 2; ++r){
+                    for (int i = 0; i < n - 1; ++i) {
+                        fprintf(file, "%d ", arr[r][k][i]);
+                    }
+                    fprintf(file, "%d\n", arr[r][k][n - 1]);
                 }
                 fprintf(file, "\n");
-
-                for (int i = 0; i < n; ++i) {
-                    fprintf(file, "%d ", arr[1][k][i]);
-                }
-                fprintf(file, "\n");
-                fprintf(file, "\n");
-            }
+            } 
         }
         #pragma omp for 
         for (int k = 0; k < N; ++k) {
             free(arr[0][k]);
             free(arr[1][k]);
-        }  
+        } 
+
     }
     fclose(file);
     double end = omp_get_wtime();
