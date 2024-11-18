@@ -3,8 +3,8 @@
 #include <omp.h>
 #include <time.h>
 
-#define N 5 // количество векторов
-#define M 5 // размер векторов
+#define N 5000 // количество векторов
+#define M 1000 // размер векторов
 #define MAX 5
 
 int** generateMatrix() {

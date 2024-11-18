@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     int min_val = MAX;
     int max_val = MIN;
     double start = omp_get_wtime();
-    #pragma omp parallel for firstprivate(min_val) reduction(max:max_val)
+    #pragma omp parallel for schedule(static, 5) firstprivate(min_val) reduction(max:max_val)
     for (int i = 0; i < NUM; ++i){
         #pragma omp parallel for reduction(min:min_val)
         for (int j=0; j < NUM; ++j){

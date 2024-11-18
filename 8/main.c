@@ -4,7 +4,7 @@
 #include <time.h>
 #include "Buffer.h"
 
-#define MAX_SIZE_BUFFER 2
+#define MAX_SIZE_BUFFER 50
 
 void wait_pair(buffer_t* buf) {
     while (1) {

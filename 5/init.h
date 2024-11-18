@@ -5,10 +5,10 @@
 #include <time.h>
 #include <omp.h>
 #include <algorithm>
-#define MAX 5
+#define MAX 100
 #define MIN -MAX
-#define NUM 10
-#define K 3
+#define NUM 500
+#define K 50
 
 std::vector<std::vector<int>> initTapeMatrixWithSafeMemory() {
     std::vector<std::vector<int>> matrix(NUM, std::vector<int>());

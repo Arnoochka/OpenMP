@@ -12,11 +12,10 @@ int main(int argc, char* argv[]) {
     int min_val = MAX;
     int max_val = MIN;
     double start = omp_get_wtime();
+
     omp_set_nested(1);
-    omp_set_num_threads(2);
     #pragma omp parallel for firstprivate(min_val) reduction(max:max_val)
     for (int i = 0; i < NUM; ++i){
-        #pragma omp parallel for reduction(min:min_val)
         for (int j=0; j < NUM; ++j){
             if (min_val > matrix[i][j]) min_val = matrix[i][j];
         }

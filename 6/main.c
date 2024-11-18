@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 6// число пар векторов
-#define MAX 10 // максимальное число по модулю в векторе
-#define MAX_SIZE 3 // максимальный размер вектора 
+#define N 5000// число пар векторов
+#define MAX 1000 // максимальное число по модулю в векторе
+#define MAX_SIZE 1000 // максимальный размер вектора 
 
 // сгенерировать N векторов
 int main(int argc, char* argv[]) {
@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     double start = omp_get_wtime();
     #pragma omp parallel private(n)
     {
-        #pragma omp for 
+        #pragma omp for schedule(guided, 5)
         for (int k = 0; k < N; ++k) {
             n = (rand() % MAX_SIZE) + 1;
             arr[0][k] = (int *)malloc(sizeof(int) * n);

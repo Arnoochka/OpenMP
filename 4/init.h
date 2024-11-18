@@ -6,7 +6,7 @@
 #include <time.h>
 #define MAX 10000
 #define MIN -MAX
-#define NUM 10000
+#define NUM 1000
 
 void initMatrix(std::vector<std::vector<int>> &matrix) {
     int sign;

@@ -5,7 +5,7 @@
 #include <time.h>
 #include <omp.h>
 #define MAX 10000
-#define NUM 100000000
+#define NUM 1000000
 
 std::vector<int> initVector() {
     std::vector<int> vec(NUM);

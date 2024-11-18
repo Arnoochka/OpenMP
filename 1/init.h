@@ -6,7 +6,7 @@
 #include <omp.h>
 #define MAX 10000
 #define MIN -MAX
-#define NUM 100
+#define NUM 1000000
 
 void initVector(std::vector<int> &vec) {
     srand(time(0));
