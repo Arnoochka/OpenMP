@@ -33,11 +33,11 @@ g++ -fopenmp "$dir/$filename" -o main
 
 # Запускаем программу
 mkdir results/$1_$2
-for (( k=1; k <= 2; k++ ))
+for (( k=1; k <= 20; k++ ))
 do
 rm results/$1_$2/result$k.log
 touch results/$1_$2/result$k.log
-for (( i=4; i <= 16; i++ ))
+for (( i=2; i <= 16; i++ ))
 do
 export OMP_NUM_THREADS=$i
 ./main >> results/$1_$2/result$k.log 2>&1

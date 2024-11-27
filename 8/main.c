@@ -42,6 +42,7 @@ int main(int argc, char* argv[]) {
     }
     results = (long long *)malloc(sizeof(long long) * num_pairs);
 
+    omp_set_nested(0);
     double start = omp_get_wtime();
     #pragma omp parallel sections
     {
